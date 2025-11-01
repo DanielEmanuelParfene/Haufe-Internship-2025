@@ -1,0 +1,129 @@
+{
+  "name": "haufe-ollama-assistant",
+  "displayName": "Haufe Ollama Code Assistant",
+  "description": "AI-powered code assistant using Ollama",
+  "version": "1.0.0",
+  "publisher": "haufe",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "haufe.askOllama",
+        "title": "Haufe: Ask About This Code",
+        "category": "Haufe AI"
+      },
+      {
+        "command": "haufe.quickFix",
+        "title": "Haufe: Quick Fix",
+        "category": "Haufe AI"
+      },
+      {
+        "command": "haufe.reviewWithDependencies",
+        "title": "Haufe: Review with Dependencies",
+        "category": "Haufe AI"
+      },
+      {
+        "command": "haufe.explainCode",
+        "title": "Haufe: Explain Code",
+        "category": "Haufe AI"
+      },
+      {
+        "command": "haufe.optimizeCode",
+        "title": "Haufe: Optimize Code",
+        "category": "Haufe AI"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "haufe.askOllama",
+          "group": "haufe@1",
+          "when": "editorHasSelection || editorTextFocus"
+        },
+        {
+          "command": "haufe.quickFix",
+          "group": "haufe@2",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "haufe.reviewWithDependencies",
+          "group": "haufe@3",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "haufe.explainCode",
+          "group": "haufe@4",
+          "when": "editorHasSelection || editorTextFocus"
+        },
+        {
+          "command": "haufe.optimizeCode",
+          "group": "haufe@5",
+          "when": "editorHasSelection || editorTextFocus"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "haufe.askOllama"
+        },
+        {
+          "command": "haufe.quickFix"
+        },
+        {
+          "command": "haufe.reviewWithDependencies"
+        },
+        {
+          "command": "haufe.explainCode"
+        },
+        {
+          "command": "haufe.optimizeCode"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "haufe.askOllama",
+        "key": "ctrl+alt+a",
+        "mac": "cmd+alt+a",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "haufe.quickFix",
+        "key": "ctrl+alt+f",
+        "mac": "cmd+alt+f",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "haufe.explainCode",
+        "key": "ctrl+alt+e",
+        "mac": "cmd+alt+e",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "haufe.optimizeCode",
+        "key": "ctrl+alt+o",
+        "mac": "cmd+alt+o",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "16.x",
+    "eslint": "^8.41.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "uuid": "^9.0.0"
+  }
+}
